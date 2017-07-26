@@ -1,5 +1,5 @@
 import React from 'react'
-import {Alert, Button} from 'react-bootstrap/lib'
+import {Alert, Button, Row} from 'react-bootstrap/lib'
 import R from 'ramda'
 
 
@@ -11,6 +11,7 @@ class List extends React.Component {
       users: props.users
     }
 
+
   }
 
   renderAlert(user) {
@@ -21,16 +22,11 @@ class List extends React.Component {
     return R.map(this.renderAlert)(users)
   }
 
-  check() {
-    console.log(this.state)
-  }
-
   render() {
      return(
-       <div>
+       <Row>
          {this.renderList(this.state.users)}
-         <Button onClick={this.check.bind(this)}>List check</Button>
-       </div>
+       </Row>
      )
   }
 
