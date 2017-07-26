@@ -3,10 +3,6 @@ import './app.css'
 import Form from './component/Form'
 import List from './component/List'
 import R from 'ramda'
-//
-// const title = (
-//   <h3><Glyphicon glyph="globe" /> My first React-app</h3>
-// )
 
 let storeName = ''
 
@@ -47,7 +43,6 @@ class App extends React.Component {
       name: storeName
     })
     this.setState({users: usersArray})
-    console.log(this.state.users)             //todo remove
   }
 
   render() {
@@ -62,21 +57,6 @@ class App extends React.Component {
     )
 
   }
-
-  // render() {
-  //   return (
-  //     <Grid>
-  //       <Row>
-  //         <Col smOffset={2} sm={8}>
-  //           <Panel header={title} bsStyle="primary">
-  //             <Form users={this.state.users}/>
-  //             {/*<List users={this.state.users}/>*/}
-  //           </Panel>
-  //         </Col>
-  //       </Row>
-  //     </Grid>
-  //   )
-  // }
 }
 
 

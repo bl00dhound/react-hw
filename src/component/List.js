@@ -1,6 +1,6 @@
 import React from 'react'
 import R from 'ramda'
-// import {Alert, Button, Row} from 'react-bootstrap/lib'
+import {ListGroup, ListGroupItem, Button, Glyphicon} from 'react-bootstrap/lib'
 import './list.css'
 
 let that = null
@@ -15,16 +15,18 @@ class List extends React.Component {
     that = this
   }
 
-
   render() {
     return (
-      <div>{R.map(renderItem)(that.props.users)}</div>
+      <ListGroup className='list'>{R.map(renderItem)(that.props.users)}</ListGroup>
     )
   }
 }
 
-const renderItem = (user) => <div className='list_item' key={user.id}>{user.name}
-                              <button onClick={that.props.deleteUser.bind(that, user.id)}>X</button>
-                            </div>
+const renderItem = (user) => <ListGroupItem href='#' key={user.id}>{user.name}
+                              <Button className='delete_btn'
+                                      onClick={that.props.deleteUser.bind(that, user.id)}
+                                      bsStyle='danger'
+                                      bsSize='xsmall'><Glyphicon glyph='remove'/></Button>
+                            </ListGroupItem>
 
 export default List
