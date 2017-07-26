@@ -5,7 +5,7 @@ import Form from './component/Form'
 import './app.css'
 
 const title = (
-  <h3><Glyphicon glyph="wrench" /> My first React-app</h3>
+  <h3><Glyphicon glyph="globe" /> My first React-app</h3>
 )
 
 class App extends React.Component {
