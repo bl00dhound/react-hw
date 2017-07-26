@@ -1,7 +1,9 @@
 import React from 'react'
-import {Alert, Button, Row, Glyphicon} from 'react-bootstrap/lib'
+import R from 'ramda'
+// import {Alert, Button, Row} from 'react-bootstrap/lib'
 import './list.css'
 
+let that = null
 
 class List extends React.Component {
 
@@ -10,31 +12,19 @@ class List extends React.Component {
     this.state = {
       users: props.users
     }
+    that = this
   }
 
-  viewUser(userId) {
-    console.log(userId)
-  }
-
-  renderList(users) {
-    return users.map( user => <Item key={user.id}
-                                    firstname={user.firstname}
-                                    lastname={user.lastname}
-                                    viewUser={this.viewUser.bind(this, user.id)}/>)
-  }
 
   render() {
-     return(
-       <Row>
-         {this.renderList(this.state.users)}
-       </Row>
-     )
+    return (
+      <div>{R.map(renderItem)(that.props.users)}</div>
+    )
   }
 }
 
-const Item = (props) => <Alert className='relative'>{props.firstname} {props.lastname}
-                          <Button className="alert_btn" onClick={props.viewUser} bsStyle='primary'>View</Button>
-                        </Alert>
-
+const renderItem = (user) => <div className='list_item' key={user.id}>{user.name}
+                              <button onClick={that.props.deleteUser.bind(that, user.id)}>X</button>
+                            </div>
 
 export default List
